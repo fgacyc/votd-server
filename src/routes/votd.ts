@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { getVotd } from '../utils';
 
-const VerseRoute = async (req: Request, res: Response, next: NextFunction) => {
+const VOTDRoute = async (req: Request, res: Response, next: NextFunction) => {
 	const {
 		verseTitleEN,
 		versePassageEN,
@@ -41,4 +41,4 @@ const VerseRoute = async (req: Request, res: Response, next: NextFunction) => {
 	});
 };
 
-export default VerseRoute;
+export default VOTDRoute;

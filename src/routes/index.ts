@@ -1,8 +1,8 @@
 import express from 'express';
-import verse from './verse';
+import votd from './votd';
 
 const router = express.Router();
 
-router.use('/verse', verse);
+router.use('/', votd);
 
 export default router;
