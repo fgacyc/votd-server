@@ -16,7 +16,9 @@ const VOTDRoute = async (req: Request, res: Response, next: NextFunction) => {
 			bookname: verseTitleEN.split('|')[0],
 			chapter: verseTitleEN.split('|')[1].split(':')[0],
 			startverse: verseTitleEN.split('|')[1].split(':')[1].split('-')[0],
-			endverse: verseTitleEN.split('|')[1].split(':')[1].split('-')[1] ?? null,
+			endverse:
+				verseTitleEN.split('|')[1].split(':')[1].split('-')[1] ??
+				verseTitleEN.split('|')[1].split(':')[1].split('-')[0],
 			content: versePassageEN,
 			version: verseVersionEN
 				.replaceAll('\n', '')
@@ -29,8 +31,10 @@ const VOTDRoute = async (req: Request, res: Response, next: NextFunction) => {
 			bookname: verseTitleZN.split('|')[0],
 			chapter: verseTitleZN.split('|')[1].split(':')[0],
 			startverse: verseTitleZN.split('|')[1].split(':')[1].split('-')[0],
-			endverse: verseTitleZN.split('|')[1].split(':')[1].split('-')[1] ?? null,
-			content: versePassageZN,
+			endverse:
+				verseTitleZN.split('|')[1].split(':')[1].split('-')[1] ??
+				verseTitleEN.split('|')[1].split(':')[1].split('-')[0],
+			content: versePassageZN.replaceAll('　', ''),
 			version: verseVersionZN
 				.replaceAll('\n', '')
 				.trim()
