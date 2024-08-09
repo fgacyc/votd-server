@@ -12,22 +12,32 @@ const VerseRoute = async (req: Request, res: Response, next: NextFunction) => {
 	} = await getVotd();
 
 	return res.send({
-		verseTitleEN,
-		versePassageEN,
-		verseVersionEN: verseVersionEN
-			.replaceAll('\n', '')
-			.trim()
-			// .replaceAll(' ', '')
-			.replaceAll('(', '')
-			.replaceAll(')', ''),
-		verseTitleZN,
-		versePassageZN,
-		verseVersionZN: verseVersionZN
-			.replaceAll('\n', '')
-			.trim()
-			// .replaceAll(' ', '')
-			.replaceAll('(', '')
-			.replaceAll(')', ''),
+		en: {
+			bookname: verseTitleEN.split('|')[0],
+			chapter: verseTitleEN.split('|')[1].split(':')[0],
+			startverse: verseTitleEN.split('|')[1].split(':')[1].split('-')[0],
+			endverse: verseTitleEN.split('|')[1].split(':')[1].split('-')[1] ?? null,
+			content: versePassageEN,
+			version: verseVersionEN
+				.replaceAll('\n', '')
+				.trim()
+				// .replaceAll(' ', '')
+				.replaceAll('(', '')
+				.replaceAll(')', ''),
+		},
+		zh: {
+			bookname: verseTitleZN.split('|')[0],
+			chapter: verseTitleZN.split('|')[1].split(':')[0],
+			startverse: verseTitleZN.split('|')[1].split(':')[1].split('-')[0],
+			endverse: verseTitleZN.split('|')[1].split(':')[1].split('-')[1] ?? null,
+			content: versePassageZN,
+			version: verseVersionZN
+				.replaceAll('\n', '')
+				.trim()
+				// .replaceAll(' ', '')
+				.replaceAll('(', '')
+				.replaceAll(')', ''),
+		},
 	});
 };
 
